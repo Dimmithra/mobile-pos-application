@@ -20,33 +20,33 @@ class AuthProvider extends ChangeNotifier {
     String deviceMake = await getDeviceMake();
     String deviceModel = await getDeviceModel();
     try {
-      var reqBody = {
-        "devieid": 'deviceID',
-        "devicemake": deviceMake,
-        "deviemodel": deviceModel,
-        "location": "",
-        "time": "$currentDate ($currentTime)",
-        "cus_code": ""
-      };
-      dev.log(reqBody.toString());
-      var response = await http.post(
-        Uri.parse(kdevicerecord),
-        headers: {"Content-Type": "application/json"},
-        body: jsonEncode(reqBody),
-      );
+      // var reqBody = {
+      //   "devieid": 'deviceID',
+      //   "devicemake": deviceMake,
+      //   "deviemodel": deviceModel,
+      //   "location": "",
+      //   "time": "$currentDate ($currentTime)",
+      //   "cus_code": ""
+      // };
+      // dev.log(reqBody.toString());
+      // var response = await http.post(
+      //   Uri.parse(kdevicerecord),
+      //   headers: {"Content-Type": "application/json"},
+      //   body: jsonEncode(reqBody),
+      // );
 
-      LoginVerificationModel temp =
-          LoginVerificationModel.fromJson(jsonDecode(response.body));
-      dev.log(response.body);
+      // LoginVerificationModel temp =
+      //     LoginVerificationModel.fromJson(jsonDecode(response.body));
+      // dev.log(response.body);
 
-      if (temp.success == 'Success') {
-        Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute<void>(
-                builder: (BuildContext context) => const MainDashBoard()),
-            (route) => false);
-      } else {
-        errorMessage(context, errorTxt: 'Security Issue').show();
-      }
+      // if (temp.success == 'Success') {
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute<void>(
+              builder: (BuildContext context) => const MainDashBoard()),
+          (route) => false);
+      // } else {
+      //   errorMessage(context, errorTxt: 'Security Issue').show();
+      // }
     } catch (e) {
       dev.log(e.toString());
     }
