@@ -166,15 +166,14 @@ class _MainDashBoardState extends State<MainDashBoard> {
                           'assets/images/user_regestration.PNG',
                         ),
                         onTap: () {
-                          print('object');
-                          return Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return const UserRegistartionScreen();
-                              },
-                            ),
-                          );
+                          setState(() {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => UserRegistartionScreen(),
+                              ),
+                            );
+                          });
                         },
                       ),
                     ],

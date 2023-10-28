@@ -45,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
         print('Connection Success');
       } else {
         print('No internet');
-        await errorMessage(context,
+        await commonMessage(context,
                 errorTxt: 'Internet Connection Issue', btnType: 1)
             .show();
       }

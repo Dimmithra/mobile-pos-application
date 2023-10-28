@@ -15,6 +15,7 @@ import 'package:mobile_pos/utils/url.dart';
 class AuthProvider extends ChangeNotifier {
   String currentDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
   String currentTime = DateFormat('hh:mm:ss').format(DateTime.now());
+
   Future<void> verficationAppdata(context) async {
     // String deviceID = await getDeviceId();
     String deviceMake = await getDeviceMake();
@@ -45,7 +46,7 @@ class AuthProvider extends ChangeNotifier {
                 builder: (BuildContext context) => const MainDashBoard()),
             (route) => false);
       } else {
-        errorMessage(context, errorTxt: 'Security Issue').show();
+        commonMessage(context, errorTxt: 'Security Issue').show();
       }
     } catch (e) {
       dev.log(e.toString());

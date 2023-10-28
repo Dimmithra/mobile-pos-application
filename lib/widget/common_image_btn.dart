@@ -4,12 +4,12 @@ class CommonImageBtn extends StatelessWidget {
   const CommonImageBtn({
     super.key,
     this.btnName,
-    required this.onTap,
+    this.onTap,
     required this.imageUrl,
     this.backgroundColor,
   });
   final String? btnName;
-  final Function() onTap;
+  final Function()? onTap;
   final AssetImage imageUrl;
   final Color? backgroundColor;
   @override
