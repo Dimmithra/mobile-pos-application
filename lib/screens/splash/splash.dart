@@ -15,18 +15,21 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  ConnectivityResult _connectionStatus = ConnectivityResult.none;
+  ConnectivityResult connectionStatus = ConnectivityResult.none;
   final Connectivity _connectivity = Connectivity();
   late StreamSubscription<ConnectivityResult> _connectivitySubscription;
   @override
   void initState() {
     // checkDeviceSeurite();
-    chechInternetConnection();
-    _connectivitySubscription =
-        _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
-    super.initState();
-    Provider.of<AuthProvider>(context, listen: false)
-        .verficationAppdata(context);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      chechInternetConnection();
+      _connectivitySubscription =
+          _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+      Provider.of<AuthProvider>(context, listen: false)
+          .permisionChecked(context);
+      // Provider.of<AuthProvider>(context, listen: false)
+      //     .determinePosition(context);
+    });
     super.initState();
   }
 
@@ -62,7 +65,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _updateConnectionStatus(ConnectivityResult result) async {
     setState(() {
-      _connectionStatus = result;
+      connectionStatus = result;
     });
   }
 

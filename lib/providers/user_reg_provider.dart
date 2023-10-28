@@ -1,17 +1,20 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'dart:developer' as dev;
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:mobile_pos/model/common_succ_message.dart';
 import 'package:mobile_pos/screens/main_home/main_home.dart';
+import 'package:mobile_pos/utils/key_const.dart';
 import 'package:mobile_pos/utils/message.dart';
 import 'package:mobile_pos/utils/url.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class UserRegProvider extends ChangeNotifier {
+  final storage = const FlutterSecureStorage();
+
   bool loadPageRefData = false;
   bool get getloadPageRefData => loadPageRefData;
   setloadPageRefData(val) {
@@ -94,6 +97,9 @@ class UserRegProvider extends ChangeNotifier {
   }
 
   Future<void> saveUserDetails(context) async {
+    var deviceMode = await storage.read(key: kDeviceModel);
+    var googleLocation = await storage.read(key: kGoogleLocation);
+    // var deviceMake = await storage.read(key: kDeviceMake);
     setloadSaveData(true);
     try {
       var reqBody = {
@@ -102,8 +108,9 @@ class UserRegProvider extends ChangeNotifier {
         "address": getaddressController.text,
         "email": getEmailController.text,
         "password": getpasswordController.text,
-        "deviceid": "54",
+        "deviceid": deviceMode,
         "logtime": "$currentDate|($currentTime)",
+        "registrationlocation": googleLocation,
       };
       dev.log(reqBody.toString());
       var response = await http.post(
