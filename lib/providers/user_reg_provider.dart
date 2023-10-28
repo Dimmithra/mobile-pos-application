@@ -53,6 +53,8 @@ class UserRegProvider extends ChangeNotifier {
     try {
       bool mobileNo = true;
       RegExp regExp = RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)');
+      RegExp passReg = RegExp(
+          r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
       if (regExp.hasMatch(mobileNoController.text)) {
         mobileNo = false;
         dev.log('Mobile Number Mismach');
@@ -60,6 +62,7 @@ class UserRegProvider extends ChangeNotifier {
         commonMessage(context, errorTxt: 'Invalid mobile Number', btnType: 1)
             .show();
       }
+      bool password = true;
       if (!mobileNo) {
         if (passwordController.text != reEnterPasswordController.text) {
           commonMessage(
@@ -68,7 +71,19 @@ class UserRegProvider extends ChangeNotifier {
           ).show();
         } else {
           dev.log('password match');
+          password = false;
+          // saveUserDetails(context);
+        }
+      }
+      if (!password) {
+        if (passReg.hasMatch(getpasswordController.text) ||
+            passReg.hasMatch(getreEnterPasswordController.text)) {
           saveUserDetails(context);
+        } else {
+          commonMessage(context,
+                  errorTxt:
+                      'At least one upper case \n At least one lower case \n  At least one digit \n At least one Special character \n At least 8 characters in length')
+              .show();
         }
       }
     } catch (e) {
