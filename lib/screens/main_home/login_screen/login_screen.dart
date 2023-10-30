@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         const EdgeInsets.only(top: 20, left: 15, right: 15),
                     child: Container(
                       height: 300,
-                      decoration: BoxDecoration(gradient: ,
+                      decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
