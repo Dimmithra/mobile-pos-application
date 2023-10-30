@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_pos/providers/home_provider.dart';
+import 'package:mobile_pos/screens/main_home/login_screen/login_screen.dart';
 import 'package:mobile_pos/screens/main_home/user_regestration/user_reg.dart';
 import 'package:mobile_pos/utils/color.dart';
 import 'package:mobile_pos/widget/common_home_body.dart';
@@ -154,7 +155,12 @@ class _MainDashBoardState extends State<MainDashBoard> {
                           'assets/images/home_login.JPG',
                         ),
                         onTap: () {
-                          print('object');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LoginScreen(),
+                            ),
+                          );
                         },
                       ),
                       const SizedBox(
@@ -170,7 +176,8 @@ class _MainDashBoardState extends State<MainDashBoard> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => UserRegistartionScreen(),
+                                builder: (context) =>
+                                    const UserRegistartionScreen(),
                               ),
                             );
                           });

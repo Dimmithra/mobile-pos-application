@@ -18,52 +18,66 @@ class CommonHomeScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 204, 211, 213),
-        body: Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  height: 200,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(30),
-                        bottomRight: Radius.circular(30)),
-                    // color: Colors.blueGrey,
-                    gradient: LinearGradient(colors: [
-                      Colors.blue,
-                      Color.fromARGB(255, 183, 183, 183),
-                      Colors.blue
-                    ]),
-                    // image: DecorationImage(
-                    //   image: imageUrl,
-                    //   fit: BoxFit.cover,
-                    // ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black,
-                        blurStyle: BlurStyle.outer,
-                        blurRadius: 30,
-                      )
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        homeTitile,
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/background_image.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  Container(
+                    height: 200,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(30),
+                          bottomRight: Radius.circular(30)),
+                      // color: Colors.blueGrey,
+                      gradient: LinearGradient(colors: [
+                        Colors.blue,
+                        Color.fromARGB(255, 183, 183, 183),
+                        Colors.blue
+                      ]),
+                      // image: DecorationImage(
+                      //   image: imageUrl,
+                      //   fit: BoxFit.cover,
+                      // ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black,
+                          blurStyle: BlurStyle.outer,
+                          blurRadius: 30,
+                        )
                       ],
                     ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          homeTitile,
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: SingleChildScrollView(
-                child: homeBody,
+                ],
               ),
-            )
-          ],
+              //   decoration: BoxDecoration(
+              //   image: DecorationImage(
+              //     image: AssetImage("assets/images/splashScreen.jpeg"),
+              //     fit: BoxFit.cover,
+              //   ),
+              // ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: SingleChildScrollView(
+                  child: homeBody,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
