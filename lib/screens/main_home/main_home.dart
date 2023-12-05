@@ -110,7 +110,7 @@ class _MainDashBoardState extends State<MainDashBoard> {
                 gradient: RadialGradient(
                   colors: [
                     Colors.white,
-                    Color.fromARGB(255, 195, 210, 213),
+                    Colors.transparent,
                   ],
                 ),
               ),

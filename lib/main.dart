@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_pos/providers/auth_provider.dart';
 import 'package:mobile_pos/providers/home_provider.dart';
+import 'package:mobile_pos/providers/login_prvider.dart';
 import 'package:mobile_pos/providers/user_reg_provider.dart';
 
 import 'screens/splash/splash.dart';
@@ -13,6 +14,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => HomeProvider()),
         ChangeNotifierProvider(create: (_) => UserRegProvider()),
+        ChangeNotifierProvider(create: (_) => LogingProvider()),
       ],
       child: const MyApp(),
     ),

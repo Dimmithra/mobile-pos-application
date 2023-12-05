@@ -71,8 +71,9 @@ class CommonHomeScreen extends StatelessWidget {
               //   ),
               // ),
               Padding(
-                padding: const EdgeInsets.only(top: 20),
+                padding: const EdgeInsets.only(top: 20, bottom: 30),
                 child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
                   child: homeBody,
                 ),
               )

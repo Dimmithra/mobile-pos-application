@@ -31,9 +31,9 @@ class _CommonMainScreenState extends State<CommonMainScreen> {
       appBar: AppBar(
         centerTitle: true,
         titleTextStyle: TextStyle(
-          fontSize: 20,
-          color: widget.titleTextColor ?? Colors.white,
-        ),
+            fontSize: 20,
+            color: widget.titleTextColor ?? Colors.white,
+            fontWeight: FontWeight.bold),
         leading: widget.centerTitle,
         // actions: [IconButton(onPressed: () {}, icon: Icon(Icons.abc))],
         backgroundColor: widget.appBarColor ?? Colors.blue,

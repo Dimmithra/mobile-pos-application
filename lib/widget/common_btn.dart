@@ -6,10 +6,12 @@ class CommonBtn extends StatelessWidget {
     super.key,
     required this.bntName,
     required this.onPress,
+    this.backgroundColor,
   });
 
   final String bntName;
   final Function() onPress;
+  final Color? backgroundColor;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -17,7 +19,7 @@ class CommonBtn extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
-        backgroundColor: kBtnPrimaryColor,
+        backgroundColor: kCommondarkBlue,
       ),
       onPressed: onPress,
       child: Text(
