@@ -30,7 +30,7 @@ class CommonHomeScreen extends StatelessWidget {
               Stack(
                 children: [
                   Container(
-                    height: 200,
+                    height: 175,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(30),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_pos/providers/home_provider.dart';
 import 'package:mobile_pos/screens/main_home/login_screen/login_screen.dart';
+import 'package:mobile_pos/screens/main_home/promotion_screen/promotion_screen.dart';
 import 'package:mobile_pos/screens/main_home/user_regestration/user_reg.dart';
 import 'package:mobile_pos/utils/color.dart';
 import 'package:mobile_pos/widget/common_home_body.dart';
@@ -125,7 +126,12 @@ class _MainDashBoardState extends State<MainDashBoard> {
                           'assets/images/promotion_icon.PNG',
                         ),
                         onTap: () {
-                          print('object');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PrommotionScreen(),
+                            ),
+                          );
                         },
                       ),
                       const SizedBox(
