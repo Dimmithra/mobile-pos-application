@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_pos/providers/login_prvider.dart';
+import 'package:mobile_pos/screens/main_home/dashboard/dashboard.dart';
 import 'package:mobile_pos/utils/color.dart';
 import 'package:mobile_pos/utils/common_main.dart';
 import 'package:mobile_pos/utils/loader.dart';
@@ -117,7 +118,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                     // backgroundColor: Colors.blue,
                                     bntName: 'Sign In',
                                     onPress: () {
-                                      if (formKey.currentState!.validate()) {}
+                                      if (formKey.currentState!.validate()) {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => Dashbaord(),
+                                          ),
+                                        );
+                                      }
                                     },
                                   ),
                                 )
