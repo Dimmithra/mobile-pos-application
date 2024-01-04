@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_pos/providers/login_prvider.dart';
+import 'package:mobile_pos/providers/login_provider.dart';
 import 'package:mobile_pos/screens/main_home/dashboard/dashboard.dart';
 import 'package:mobile_pos/utils/color.dart';
 import 'package:mobile_pos/utils/common_main.dart';
@@ -114,20 +114,19 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                                 SizedBox(
                                   width: MediaQuery.of(context).size.width,
-                                  child: CommonBtn(
-                                    // backgroundColor: Colors.blue,
-                                    bntName: 'Sign In',
-                                    onPress: () {
-                                      if (formKey.currentState!.validate()) {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => Dashbaord(),
-                                          ),
-                                        );
-                                      }
-                                    },
-                                  ),
+                                  child: logingProvider.getloadingLoginData
+                                      ? const CommonLoader()
+                                      : CommonBtn(
+                                          // backgroundColor: Colors.blue,
+                                          bntName: 'Sign In',
+                                          onPress: () {
+                                            if (formKey.currentState!
+                                                .validate()) {
+                                              logingProvider
+                                                  .loginProccess(context);
+                                            }
+                                          },
+                                        ),
                                 )
                               ],
                             ),

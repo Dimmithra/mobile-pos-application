@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_pos/providers/auth_provider.dart';
 import 'package:mobile_pos/providers/home_provider.dart';
-import 'package:mobile_pos/providers/login_prvider.dart';
+import 'package:mobile_pos/providers/login_provider.dart';
 import 'package:mobile_pos/providers/user_reg_provider.dart';
 
 import 'screens/splash/splash.dart';

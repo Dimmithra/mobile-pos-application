@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_pos/utils/common_main.dart';
 import 'package:provider/provider.dart';
 
-import '../../../providers/login_prvider.dart';
+import '../../../providers/login_provider.dart';
 
 class PrommotionScreen extends StatefulWidget {
   const PrommotionScreen({super.key});

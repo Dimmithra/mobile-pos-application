@@ -9,3 +9,4 @@ const kBtnPrimaryColor = Colors.blue;
 const kErrorColor = Colors.red;
 const kWarningColor = Colors.amber;
 const kSuccessColor = Colors.blue;
+const kLoaderColor = Colors.blue;

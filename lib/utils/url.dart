@@ -5,3 +5,5 @@ const BASE_URL = "http://192.168.0.111:3000";
 const kdevicerecord = "$BASE_URL/devicerecord";
 //User registratin
 const kuserregistration = "$BASE_URL/userregistration";
+//login url
+const klogin = "$BASE_URL/login";
