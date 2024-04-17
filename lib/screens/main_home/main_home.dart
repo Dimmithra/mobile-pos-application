@@ -93,9 +93,9 @@ class _MainDashBoardState extends State<MainDashBoard> {
               const Text(
                 'Welcome',
                 style: TextStyle(
-                  color: kCommonBlack,
-                  fontSize: 24,
-                ),
+                    color: kCommonBlack,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold),
               )
             ],
           ),
@@ -122,9 +122,10 @@ class _MainDashBoardState extends State<MainDashBoard> {
                     children: [
                       CommonImageBtn(
                         btnName: 'Promotion Details',
-                        imageUrl: const AssetImage(
-                          'assets/images/promotion_icon.PNG',
-                        ),
+                        imageUrl: "assets/images/promotion_icon.PNG",
+                        // AssetImage(
+                        //   'assets/images/promotion_icon.PNG',
+                        // ),
                         onTap: () {
                           Navigator.push(
                             context,
@@ -139,9 +140,10 @@ class _MainDashBoardState extends State<MainDashBoard> {
                       ),
                       CommonImageBtn(
                         btnName: 'Price Details',
-                        imageUrl: const AssetImage(
-                          'assets/images/price_details.PNG',
-                        ),
+                        imageUrl: 'assets/images/price_details.PNG',
+                        // const AssetImage(
+                        //   'assets/images/price_details.PNG',
+                        // ),
                         backgroundColor: Colors.white,
                         onTap: () {
                           print('object');
@@ -157,9 +159,10 @@ class _MainDashBoardState extends State<MainDashBoard> {
                     children: [
                       CommonImageBtn(
                         btnName: 'Sign In',
-                        imageUrl: const AssetImage(
-                          'assets/images/home_login.JPG',
-                        ),
+                        imageUrl: 'assets/images/home_login.JPG',
+                        // const AssetImage(
+                        //   'assets/images/home_login.JPG',
+                        // ),
                         onTap: () {
                           Navigator.push(
                             context,
@@ -174,9 +177,10 @@ class _MainDashBoardState extends State<MainDashBoard> {
                       ),
                       CommonImageBtn(
                         btnName: 'Create Account',
-                        imageUrl: const AssetImage(
-                          'assets/images/user_regestration.PNG',
-                        ),
+                        imageUrl: 'assets/images/user_regestration.PNG',
+                        //  const AssetImage(
+                        //   'assets/images/user_regestration.PNG',
+                        // ),
                         onTap: () {
                           setState(() {
                             Navigator.push(

@@ -20,10 +20,15 @@ class CommonHomeScreen extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 204, 211, 213),
         body: Container(
           decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/background_image.jpg"),
-              fit: BoxFit.cover,
-            ),
+            // image: DecorationImage(
+            //   image: AssetImage("assets/images/background_image.jpg"),
+            //   fit: BoxFit.cover,
+            // ),
+            gradient: LinearGradient(colors: [
+              Colors.green.shade100,
+              Colors.green.shade200,
+              // Color.fromARGB(255, 183, 183, 183),
+            ]),
           ),
           child: Column(
             children: [
@@ -31,15 +36,16 @@ class CommonHomeScreen extends StatelessWidget {
                 children: [
                   Container(
                     height: 175,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(30),
-                          bottomRight: Radius.circular(30)),
+                          bottomLeft: Radius.circular(40),
+                          bottomRight: Radius.circular(40)),
                       // color: Colors.blueGrey,
                       gradient: LinearGradient(colors: [
-                        Colors.blue,
-                        Color.fromARGB(255, 183, 183, 183),
-                        Colors.blue
+                        Colors.green.shade900,
+                        Colors.green.shade700,
+                        Colors.green.shade400,
+                        // Color.fromARGB(255, 183, 183, 183),
                       ]),
                       // image: DecorationImage(
                       //   image: imageUrl,

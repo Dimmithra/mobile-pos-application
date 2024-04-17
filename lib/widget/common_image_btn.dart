@@ -10,7 +10,7 @@ class CommonImageBtn extends StatelessWidget {
   });
   final String? btnName;
   final Function()? onTap;
-  final AssetImage imageUrl;
+  final String imageUrl;
   final Color? backgroundColor;
   @override
   Widget build(BuildContext context) {
@@ -22,21 +22,23 @@ class CommonImageBtn extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           border: Border.all(color: Colors.black),
-          color: backgroundColor ?? Colors.blue,
-          image: DecorationImage(
-            image: imageUrl,
-            fit: BoxFit.cover,
-          ),
+          color: backgroundColor ?? Colors.white,
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              Image(
+                image: AssetImage(imageUrl),
+                width: 80,
+                height: 80,
+              ),
               Container(
                 color: Colors.transparent,
                 child: Text(
                   btnName!,
+                  textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
