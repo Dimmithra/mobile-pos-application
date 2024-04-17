@@ -10,6 +10,8 @@ class CommonMainScreen extends StatefulWidget {
     this.backGroundColor,
     this.centerTitle,
     this.drawer,
+    this.actions,
+    this.automaticallyImplyLeading = true,
   });
   final String title;
   final Color? appBarColor;
@@ -18,7 +20,8 @@ class CommonMainScreen extends StatefulWidget {
   final Color? backGroundColor;
   final Widget? centerTitle;
   final Widget? drawer;
-
+  final List<Widget>? actions;
+  final bool? automaticallyImplyLeading;
   @override
   State<CommonMainScreen> createState() => _CommonMainScreenState();
 }
@@ -30,6 +33,8 @@ class _CommonMainScreenState extends State<CommonMainScreen> {
       drawer: widget.drawer,
       appBar: AppBar(
         centerTitle: true,
+        actions: widget.actions,
+        // automaticallyImplyLeading: widget.automaticallyImplyLeading,
         titleTextStyle: TextStyle(
             fontSize: 20,
             color: widget.titleTextColor ?? Colors.white,

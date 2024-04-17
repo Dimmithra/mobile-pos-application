@@ -10,3 +10,4 @@ const kErrorColor = Colors.red;
 const kWarningColor = Colors.amber;
 const kSuccessColor = Colors.blue;
 const kLoaderColor = Colors.blue;
+final kAppBarColor = Colors.green.shade900;
