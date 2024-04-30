@@ -28,6 +28,7 @@ class PromotionProvider extends ChangeNotifier {
       if (temp.success == 'success') {
         setallPromotionModelData(temp);
       } else {
+        setallPromotionModelData(temp);
         commonMessage(context, errorTxt: "No Promotion Founded").show();
       }
     } catch (e) {

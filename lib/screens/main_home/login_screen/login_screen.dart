@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_pos/providers/login_provider.dart';
 import 'package:mobile_pos/screens/main_home/dashboard/dashboard.dart';
+import 'package:mobile_pos/screens/main_home/user_regestration/user_reg.dart';
 import 'package:mobile_pos/utils/color.dart';
 import 'package:mobile_pos/utils/common_main.dart';
 import 'package:mobile_pos/utils/loader.dart';
@@ -29,19 +30,17 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return CommonMainScreen(
-        title: 'Login',
-        titleTextColor: kCommonBlack,
-        appBarColor: const Color.fromARGB(255, 145, 220, 255),
-        body: SingleChildScrollView(
-          child: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/images/login.jpg"),
-                fit: BoxFit.cover,
-              ),
-              // color: Colors.grey,
-            ),
-            height: MediaQuery.of(context).size.height - (50),
+        title: 'Sign Up',
+        titleTextColor: kCommonWhite,
+        appBarColor: kAppBarColor,
+        body: Container(
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [
+            Colors.white,
+            Colors.white70,
+          ])),
+          child: SingleChildScrollView(
             child: Consumer<LogingProvider>(
               builder: (context, logingProvider, child) {
                 if (logingProvider.getloginLoader) {
@@ -53,35 +52,40 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(
-                            top: 100, left: 15, right: 15),
+                        padding:
+                            const EdgeInsets.only(top: 50, left: 15, right: 15),
                         child: Container(
-                          height: 400,
                           decoration: BoxDecoration(
-                            // color: Colors.white,
-                            // gradient: const SweepGradient(colors: [
-                            //   Colors.transparent,
-                            //   // Color.fromARGB(255, 142, 204, 255),
-                            //   Colors.white,
-                            //   Colors.transparent
-                            // ]),
-                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: Colors.black,
+                            ),
+                            gradient: const SweepGradient(colors: [
+                              Colors.white70,
+                              Colors.white,
+                            ]),
+                            borderRadius: BorderRadius.circular(20),
                           ),
                           alignment: Alignment.center,
                           child: Padding(
-                            padding: EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: Column(
                               children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text('Sign Up',
-                                        style: TextStyle(
-                                            fontSize: 30,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold))
-                                  ],
+                                Image(
+                                  image: AssetImage(
+                                    "assets/images/loginImage.jpg",
+                                  ),
+                                  height: 120,
                                 ),
+                                Text('Login In To Continue',
+                                    style: TextStyle(
+                                        fontSize: 22,
+                                        color: Colors.indigo.shade900,
+                                        fontWeight: FontWeight.bold)),
+                                Text('Welcome',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.indigo.shade500,
+                                        fontWeight: FontWeight.bold)),
                                 SizedBox(
                                   height: 30,
                                 ),
@@ -127,6 +131,34 @@ class _LoginScreenState extends State<LoginScreen> {
                                             }
                                           },
                                         ),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        top: 15,
+                                      ),
+                                      child: InkWell(
+                                        onTap: () {
+                                          Navigator.push(context,
+                                              MaterialPageRoute(
+                                            builder: (context) {
+                                              return const UserRegistartionScreen();
+                                            },
+                                          ));
+                                        },
+                                        child: Text(
+                                          "Create Account",
+                                          style: TextStyle(
+                                            color: Colors.indigo.shade600,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 )
                               ],
                             ),

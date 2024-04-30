@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_pos/providers/home_provider.dart';
 import 'package:mobile_pos/screens/main_home/login_screen/login_screen.dart';
+import 'package:mobile_pos/screens/main_home/product_details/product_details.dart';
 import 'package:mobile_pos/screens/main_home/promotion_screen/promotion_screen.dart';
 import 'package:mobile_pos/screens/main_home/user_regestration/user_reg.dart';
 import 'package:mobile_pos/utils/color.dart';
@@ -100,7 +101,8 @@ class _MainDashBoardState extends State<MainDashBoard> {
             ],
           ),
           homeBody: Padding(
-            padding: const EdgeInsets.only(top: 100),
+            padding:
+                EdgeInsets.only(top: MediaQuery.of(context).size.height / 15),
             child: Container(
               padding: const EdgeInsets.all(8.0),
               decoration: const BoxDecoration(
@@ -139,7 +141,7 @@ class _MainDashBoardState extends State<MainDashBoard> {
                         width: 10,
                       ),
                       CommonImageBtn(
-                        btnName: 'Price Details',
+                        btnName: 'Product Details',
                         imageUrl: 'assets/images/price_details.PNG',
                         // const AssetImage(
                         //   'assets/images/price_details.PNG',
@@ -147,6 +149,11 @@ class _MainDashBoardState extends State<MainDashBoard> {
                         backgroundColor: Colors.white,
                         onTap: () {
                           print('object');
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ProductDetailsScreen(),
+                              ));
                         },
                       ),
                     ],

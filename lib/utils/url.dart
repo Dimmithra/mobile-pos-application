@@ -1,5 +1,5 @@
 // ignore: constant_identifier_names
-const BASE_URL = "http://192.168.32.9:3000";
+const BASE_URL = "http://192.168.0.102:3000";
 
 //splash screen
 const kdevicerecord = "$BASE_URL/devicerecord";
@@ -9,3 +9,5 @@ const kuserregistration = "$BASE_URL/userregistration";
 const klogin = "$BASE_URL/login";
 //get allpromotion
 const kgetAllPromotionRecord = "$BASE_URL/getAllPromotionRecord";
+//getall items
+const kgetAllItemRecord = "$BASE_URL/getAllItemRecord";

@@ -11,3 +11,8 @@ const kWarningColor = Colors.amber;
 const kSuccessColor = Colors.blue;
 const kLoaderColor = Colors.blue;
 final kAppBarColor = Colors.green.shade900;
+final kAppBodyColor = [
+  Colors.green.shade900,
+  Colors.green.shade700,
+  Colors.green.shade400,
+];

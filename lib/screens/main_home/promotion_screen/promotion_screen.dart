@@ -34,28 +34,110 @@ class _PrommotionScreenState extends State<PrommotionScreen> {
           if (promotionProvider.getloadPromotionData) {
             return const CommonLoader();
           }
-          return ListView.builder(
-            itemCount: promotionProvider.getallPromotionModelData!.data!.length,
-            itemBuilder: (context, index) {
-              return Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                              '${promotionProvider.getallPromotionModelData!.data![index].mainTitle}'),
-                          Text('Market price'),
-                        ],
+          return promotionProvider.getallPromotionModelData!.data!.isNotEmpty
+              ? ListView.builder(
+                  itemCount:
+                      promotionProvider.getallPromotionModelData!.data!.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            gradient: LinearGradient(colors: [
+                              Colors.purple.shade400,
+                              Colors.deepPurple.shade300
+                            ])),
+                        child: Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: Row(
+                            // crossAxisAlignment: CrossAxisAlignment.start,
+
+                            children: [
+                              Container(
+                                width: 80,
+                                height: 80,
+                                padding: EdgeInsets.only(top: 30),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Colors.green,
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      '${promotionProvider.getallPromotionModelData!.data![index].promotionDate}',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width / 1.5,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(right: 50),
+                                      child: Text(
+                                        '${promotionProvider.getallPromotionModelData!.data![index].mainTitle}',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width / 2,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: Text(
+                                        '${promotionProvider.getallPromotionModelData!.data![index].subTitle}',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width / 2,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8),
+                                      child: Text(
+                                        '${promotionProvider.getallPromotionModelData!.data![index].discription}',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                    ],
-                  ),
-                ),
-              );
-            },
-          );
+                    );
+                  },
+                )
+              : Container(
+                  child: Text("NO Promotion recode Founded"),
+                );
         },
       ),
     );

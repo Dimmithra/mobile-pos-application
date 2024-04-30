@@ -17,19 +17,8 @@ class CommonHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 204, 211, 213),
+        backgroundColor: Colors.green.shade50,
         body: Container(
-          decoration: BoxDecoration(
-            // image: DecorationImage(
-            //   image: AssetImage("assets/images/background_image.jpg"),
-            //   fit: BoxFit.cover,
-            // ),
-            gradient: LinearGradient(colors: [
-              Colors.green.shade100,
-              Colors.green.shade200,
-              // Color.fromARGB(255, 183, 183, 183),
-            ]),
-          ),
           child: Column(
             children: [
               Stack(

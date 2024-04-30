@@ -41,7 +41,7 @@ class _CommonMainScreenState extends State<CommonMainScreen> {
             fontWeight: FontWeight.bold),
         leading: widget.centerTitle,
         // actions: [IconButton(onPressed: () {}, icon: Icon(Icons.abc))],
-        backgroundColor: widget.appBarColor ?? Colors.blue,
+        backgroundColor: widget.appBarColor ?? Colors.green.shade700,
         title: Text(
           widget.title,
         ),
