@@ -74,12 +74,19 @@ class _SplashScreenState extends State<SplashScreen> {
     return SafeArea(
       child: Scaffold(
         body: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/splashScreen.jpeg"),
-              fit: BoxFit.cover,
-            ),
-          ),
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [Colors.green.shade100, Colors.green.shade50])
+              // image: DecorationImage(
+              //   image: AssetImage("assets/images/main_home_title.png"),
+              //   fit: BoxFit.cover,
+              // ),
+              ),
+          child: Center(
+              child: Image(
+            image: AssetImage("assets/images/splash_image.png"),
+            height: MediaQuery.of(context).size.width / 2,
+          )),
         ),
       ),
     );

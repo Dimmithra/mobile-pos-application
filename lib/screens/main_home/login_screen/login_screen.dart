@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:mobile_pos/providers/login_provider.dart';
 import 'package:mobile_pos/screens/main_home/dashboard/dashboard.dart';
 import 'package:mobile_pos/screens/main_home/user_regestration/user_reg.dart';
 import 'package:mobile_pos/utils/color.dart';
 import 'package:mobile_pos/utils/common_main.dart';
+import 'package:mobile_pos/utils/key_const.dart';
 import 'package:mobile_pos/utils/loader.dart';
 import 'package:mobile_pos/widget/common_btn.dart';
 import 'package:mobile_pos/widget/common_home_body.dart';
@@ -22,20 +24,27 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Provider.of<LogingProvider>(context, listen: false);
+      // Provider.of<LogingProvider>(context, listen: false).readUserData();
+      // Provider.of<LogingProvider>(context, listen: false).clearLoginData();
     });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final storage = const FlutterSecureStorage();
+
+    var emailStore = storage.read(key: kEmail);
+    var passwordStore = storage.read(key: kPassword);
+    var userLoginvaldator = storage.read(key: kValidateUserData);
+
     return CommonMainScreen(
         title: 'Sign Up',
         titleTextColor: kCommonWhite,
         appBarColor: kAppBarColor,
         body: Container(
           height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               gradient: LinearGradient(colors: [
             Colors.white,
             Colors.white70,
@@ -70,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             padding: const EdgeInsets.all(10.0),
                             child: Column(
                               children: [
-                                Image(
+                                const Image(
                                   image: AssetImage(
                                     "assets/images/loginImage.jpg",
                                   ),
@@ -86,26 +95,29 @@ class _LoginScreenState extends State<LoginScreen> {
                                         fontSize: 20,
                                         color: Colors.indigo.shade500,
                                         fontWeight: FontWeight.bold)),
-                                SizedBox(
-                                  height: 30,
+                                const SizedBox(
+                                  height: 20,
                                 ),
                                 CommonInput(
-                                  suffix: Icon(Icons.person,
+                                  suffix: const Icon(Icons.person,
                                       color: Colors.black, size: 35),
-                                  hintText: 'Email Address',
-                                  label: 'Enter Your Email Address',
+                                  hintText:
+                                      "${userLoginvaldator == 'true' ? emailStore : "Enter Your Email Address"}",
+                                  label: ' Enter Your Email Address',
                                   fullboader: true,
                                   isValidate: true,
                                   backgroundcolor: Colors.black,
                                   controller: logingProvider.getEmailController,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 15,
                                 ),
                                 CommonInput(
-                                  suffix: Icon(Icons.password_sharp,
+                                  isPassword: true,
+                                  suffix: const Icon(Icons.password_sharp,
                                       color: Colors.black, size: 35),
-                                  hintText: 'Password',
+                                  hintText:
+                                      '${userLoginvaldator == 'true' ? passwordStore : "Enter Your Email Password"}',
                                   isValidate: true,
                                   label: 'Enter Your Password',
                                   fullboader: true,
@@ -113,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   controller:
                                       logingProvider.getPasswordController,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ),
                                 SizedBox(

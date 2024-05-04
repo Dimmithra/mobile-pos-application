@@ -16,6 +16,7 @@ class CommonInput extends StatelessWidget {
     this.lableColor = false,
     this.isValidate = false,
     this.maxLength,
+    this.isPassword = false,
   });
   final TextEditingController? controller;
   final String hintText;
@@ -29,6 +30,8 @@ class CommonInput extends StatelessWidget {
   final bool lableColor;
   final bool isValidate;
   final int? maxLength;
+  final bool isPassword;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -44,6 +47,7 @@ class CommonInput extends StatelessWidget {
 
         return null;
       },
+      obscureText: isPassword,
       keyboardType:
           keyBoardType ? TextInputType.number : TextInputType.multiline,
       decoration: InputDecoration(

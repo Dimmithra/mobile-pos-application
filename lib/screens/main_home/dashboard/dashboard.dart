@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_pos/screens/main_home/login_screen/login_screen.dart';
+import 'package:mobile_pos/screens/main_home/main_home.dart';
 import 'package:mobile_pos/utils/color.dart';
 import 'package:mobile_pos/utils/common_main.dart';
 import 'package:mobile_pos/utils/message.dart';
@@ -47,7 +48,7 @@ class _DashbaordState extends State<Dashbaord> {
                               Navigator.pushAndRemoveUntil(context,
                                   MaterialPageRoute(
                                 builder: (context) {
-                                  return const LoginScreen();
+                                  return const MainDashBoard();
                                 },
                               ), (route) => false);
                             },
