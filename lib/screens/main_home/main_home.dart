@@ -142,7 +142,9 @@ class _MainDashBoardState extends State<MainDashBoard> {
                       ),
                       CommonImageBtn(
                         btnName: 'Product Details',
-                        imageUrl: 'assets/images/price_details.PNG',
+                        imageUrl: 'assets/images/productImage.png',
+                        height: 80,
+                        width: 120,
                         // const AssetImage(
                         //   'assets/images/price_details.PNG',
                         // ),

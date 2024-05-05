@@ -17,9 +17,9 @@ class CommonBtn extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0),
+          borderRadius: BorderRadius.circular(8.0),
         ),
-        backgroundColor: kCommondarkBlue,
+        backgroundColor: backgroundColor ?? kCommondarkBlue,
       ),
       onPressed: onPress,
       child: Text(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_pos/providers/auth_provider.dart';
+import 'package:mobile_pos/providers/bill_provider.dart';
 import 'package:mobile_pos/providers/home_provider.dart';
 import 'package:mobile_pos/providers/login_provider.dart';
 import 'package:mobile_pos/providers/pomotion_provider.dart';
@@ -19,6 +20,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => LogingProvider()),
         ChangeNotifierProvider(create: (_) => PromotionProvider()),
         ChangeNotifierProvider(create: (_) => ProductDetailsProvider()),
+        ChangeNotifierProvider(create: (_) => BillProvider()),
       ],
       child: const MyApp(),
     ),

@@ -5,13 +5,20 @@ class CommonImageBtn extends StatelessWidget {
     super.key,
     this.btnName,
     this.onTap,
-    required this.imageUrl,
+    this.imageUrl,
     this.backgroundColor,
+    this.icon,
+    this.width,
+    this.height,
   });
   final String? btnName;
   final Function()? onTap;
-  final String imageUrl;
+  final String? imageUrl;
   final Color? backgroundColor;
+  final Widget? icon;
+  final double? width;
+  final double? height;
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -29,11 +36,14 @@ class CommonImageBtn extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Image(
-                image: AssetImage(imageUrl),
-                width: 80,
-                height: 80,
-              ),
+              Container(
+                  child: imageUrl == null
+                      ? icon
+                      : Image(
+                          image: AssetImage(imageUrl!),
+                          width: width ?? 80,
+                          height: height ?? 80,
+                        )),
               Container(
                 color: Colors.transparent,
                 child: Text(

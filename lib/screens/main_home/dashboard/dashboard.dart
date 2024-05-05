@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_pos/screens/main_home/dashboard/bill_payment_screen/bill_payment.dart';
 import 'package:mobile_pos/screens/main_home/login_screen/login_screen.dart';
 import 'package:mobile_pos/screens/main_home/main_home.dart';
 import 'package:mobile_pos/utils/color.dart';
@@ -82,7 +83,79 @@ class _DashbaordState extends State<Dashbaord> {
                   )),
             )
           ],
-          body: SingleChildScrollView(),
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 8,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CommonImageBtn(
+                        btnName: 'Bill Payment',
+                        icon: Icon(
+                          Icons.payments_rounded,
+                          color: Colors.indigo.shade900,
+                          size: 80,
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const BillPaymentScreen(),
+                              ));
+                        },
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      CommonImageBtn(
+                        btnName: 'My Chat',
+                        icon: Icon(
+                          Icons.chat_outlined,
+                          color: Colors.indigo.shade900,
+                          size: 80,
+                        ),
+                        onTap: () {},
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CommonImageBtn(
+                        btnName: 'Payment History',
+                        icon: Icon(
+                          Icons.history_outlined,
+                          color: Colors.indigo.shade900,
+                          size: 80,
+                        ),
+                        onTap: () {},
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      CommonImageBtn(
+                        btnName: 'Price Details',
+                        icon: Icon(
+                          Icons.price_change_outlined,
+                          color: Colors.indigo.shade900,
+                          size: 80,
+                        ),
+                        onTap: () {},
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
         );
       },
     );
