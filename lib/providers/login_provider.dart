@@ -64,6 +64,10 @@ class LogingProvider extends ChangeNotifier {
                   await storage.write(
                       key: kPassword, value: passwordController.text);
                   await storage.write(key: kValidateUserData, value: 'true');
+                  await storage.write(
+                      key: kmobileNo, value: temp.user!.mobileno);
+                  await storage.write(
+                      key: kcustomername, value: temp.user!.customername);
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(

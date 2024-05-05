@@ -22,6 +22,8 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<ProductDetailsProvider>(context, listen: false)
           .getAllProduct(context);
+      Provider.of<ProductDetailsProvider>(context, listen: false)
+          .setloadCompleBilldate(false);
     });
     super.initState();
   }
@@ -43,36 +45,37 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: CommonBtn(
-                          bntName: "Complete Shopping",
-                          backgroundColor: Colors.blueGrey.shade500,
-                          onPress: () {
-                            setState(() {
-                              if (productDetailsProvider
-                                      .subtotalPriceCalculator() <=
-                                  0) {
-                                final snackBar = SnackBar(
-                                  backgroundColor: Colors.red.shade500,
-                                  content: const Text(
-                                      'Unable To Process this Payment.Please Select The minimum one Item'),
-                                  action: SnackBarAction(
-                                    label: 'Undo',
-                                    textColor: Colors.white,
-                                    onPressed: () {
-                                      // Some code to undo the change.
-                                    },
-                                  ),
-                                );
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(snackBar);
-                              } else {
-                                dev.log(productDetailsProvider
-                                    .subtotalPriceCalculator()
-                                    .toString());
-                              }
-                            });
-                          },
-                        ),
+                        child: productDetailsProvider.getloadCompleBilldate
+                            ? const CommonLoader()
+                            : CommonBtn(
+                                bntName: "Complete Shopping",
+                                backgroundColor: Colors.blueGrey.shade500,
+                                onPress: () {
+                                  setState(() {
+                                    if (productDetailsProvider
+                                            .subtotalPriceCalculator() <=
+                                        0) {
+                                      final snackBar = SnackBar(
+                                        backgroundColor: Colors.red.shade500,
+                                        content: const Text(
+                                            'Unable To Process this Payment.Please Select The minimum one Item'),
+                                        action: SnackBarAction(
+                                          label: 'Undo',
+                                          textColor: Colors.white,
+                                          onPressed: () {
+                                            // Some code to undo the change.
+                                          },
+                                        ),
+                                      );
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(snackBar);
+                                    } else {
+                                      productDetailsProvider
+                                          .completeBillRecord(context);
+                                    }
+                                  });
+                                },
+                              ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -261,6 +264,33 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
                       padding: const EdgeInsets.all(15.0),
                       child: Column(
                         children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text(
+                                  "No Of Itmes:",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.indigo.shade800,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Text(
+                                  "${productDetailsProvider.itemCountCalculator()}",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.indigo.shade800,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [

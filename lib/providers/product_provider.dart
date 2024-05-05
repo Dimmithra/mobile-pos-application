@@ -2,14 +2,22 @@ import 'dart:convert';
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'dart:developer' as dev;
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
+import 'package:mobile_pos/model/bill_payment_reponse_model.dart';
 import 'package:mobile_pos/model/itemdetails_model.dart';
 import 'package:mobile_pos/model/selected_item_model.dart';
+import 'package:mobile_pos/screens/main_home/dashboard/dashboard.dart';
+import 'package:mobile_pos/utils/key_const.dart';
 import 'package:mobile_pos/utils/message.dart';
 import 'package:mobile_pos/utils/url.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class ProductDetailsProvider extends ChangeNotifier {
+  final storage = const FlutterSecureStorage();
+
   bool loadingProductData = false;
   bool get getloadingProductData => loadingProductData;
   setloadingProductData(Val) {
@@ -232,5 +240,112 @@ class ProductDetailsProvider extends ChangeNotifier {
       subTotalPrice += double.parse(item.totelPrice!);
     }
     return subTotalPrice;
+  }
+
+  double itemCount = 0;
+  double itemCountCalculator() {
+    double itemCount = 0;
+    itemCount +=
+        double.parse(getselectedProductDetailsModelData.length.toString());
+
+    return itemCount;
+  }
+
+  //save Bill
+  String currentDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
+  String currentTime = DateFormat('hh:mm:ss').format(DateTime.now());
+
+  Future<void> completeBillRecord(context) async {
+    var userEmail = await storage.read(key: kEmail);
+    var usermobileNo = await storage.read(key: kmobileNo);
+    var userName = await storage.read(key: kcustomername);
+    setloadCompleBilldate(true);
+    try {
+      var reqBody = {
+        "cus_email": userEmail,
+        "cus_mobileno": usermobileNo,
+        "cus_name": userName,
+        "date_time": "$currentDate|$currentTime",
+        "itemcount": itemCountCalculator().toString(),
+        "item": [
+          for (int i = 0; i < selectedProductDetailsModelData.length; i++)
+            {
+              "itemcode": selectedProductDetailsModelData[i].no,
+              "name": selectedProductDetailsModelData[i].itemName,
+              "qty": selectedProductDetailsModelData[i].qty,
+              "amount": selectedProductDetailsModelData[i].price,
+              "discount_price": selectedProductDetailsModelData[i].discount,
+              "itemTotal": selectedProductDetailsModelData[i].totelPrice
+            },
+        ],
+        "total_amount": calculateTotalPrice().toString(),
+        "tdiscount_amount": calculateDiscountPrice().toString(),
+        "subtotal": subtotalPriceCalculator().toString()
+      };
+
+      // dev.log(reqBody.toString());
+      var response = await http.post(
+        Uri.parse(kbillPayment),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode(reqBody),
+      );
+      dev.log(response.body);
+
+      BillPaymentResponseMessage temp =
+          BillPaymentResponseMessage.fromJson(jsonDecode(response.body));
+      dev.log(response.body);
+
+      if (temp.success == 'Success') {
+        setbillPaymentResponseMessageData(temp);
+        commonMessage(context,
+            errorTxt: temp.message.toString(),
+            btnType: 3,
+            buttons: [
+              DialogButton(
+                child: const Text("Done"),
+                onPressed: () {
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const Dashbaord(),
+                      ),
+                      (route) => true);
+                  clearBillPaymentScreenData(context);
+                },
+              )
+            ]).show();
+      } else {
+        setbillPaymentResponseMessageData(temp);
+        commonMessage(context, errorTxt: temp.message.toString()).show();
+      }
+    } catch (e) {
+      setloadCompleBilldate(false);
+      dev.log(e.toString());
+    } finally {
+      setloadCompleBilldate(false);
+    }
+  }
+
+  bool loadCompleBilldate = false;
+  bool get getloadCompleBilldate => loadCompleBilldate;
+  setloadCompleBilldate(val) {
+    loadCompleBilldate = val;
+    notifyListeners();
+  }
+
+  BillPaymentResponseMessage? billPaymentResponseMessageData;
+  BillPaymentResponseMessage? get getbillPaymentResponseMessageData =>
+      billPaymentResponseMessageData;
+  setbillPaymentResponseMessageData(val) {
+    billPaymentResponseMessageData = val;
+    notifyListeners();
+  }
+
+  Future<void> clearBillPaymentScreenData(context) async {
+    for (int i = 0; i < selectedProductDetailsModelData.length;) {
+      removeaddItemRecords(selectedProductDetailsModelData[i]);
+    }
+    setloadCompleBilldate(false);
+    notifyListeners();
   }
 }

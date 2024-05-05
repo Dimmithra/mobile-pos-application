@@ -5,4 +5,6 @@ const kAccessGoogleLocation = 'kAccessGoogleLocation';
 const kGoogleLocation = 'kGoogleLocation';
 const kEmail = 'kEmail';
 const kPassword = 'kPassword';
+const kmobileNo = 'kmobileNo';
+const kcustomername = 'kcustomername';
 const kValidateUserData = 'kValidateUserData';
