@@ -14,3 +14,5 @@ const kgetAllPromotionRecord = "$BASE_URL/getAllPromotionRecord";
 const kgetAllItemRecord = "$BASE_URL/getAllItemRecord";
 //save bill
 const kbillPayment = "$BASE_URL/billPayment";
+//get Bill records
+const kgetbillRecord = "$BASE_URL/getbillRecord";

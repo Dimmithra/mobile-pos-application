@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_pos/screens/main_home/dashboard/bill_payment_screen/bill_payment.dart';
+import 'package:mobile_pos/screens/main_home/dashboard/payment_records/payment_records.dart';
 import 'package:mobile_pos/screens/main_home/login_screen/login_screen.dart';
 import 'package:mobile_pos/screens/main_home/main_home.dart';
+import 'package:mobile_pos/screens/main_home/product_details/product_details.dart';
 import 'package:mobile_pos/utils/color.dart';
 import 'package:mobile_pos/utils/common_main.dart';
 import 'package:mobile_pos/utils/message.dart';
@@ -26,6 +28,7 @@ class _DashbaordState extends State<Dashbaord> {
       builder: (context, homeProvider, child) {
         return CommonMainScreen(
           title: 'Home Page',
+          automaticallyImplyLeading: false,
           actions: [
             Container(
               decoration: BoxDecoration(
@@ -136,7 +139,15 @@ class _DashbaordState extends State<Dashbaord> {
                           color: Colors.indigo.shade900,
                           size: 80,
                         ),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const PaymentRecordsScreen(),
+                            ),
+                          );
+                        },
                       ),
                       const SizedBox(
                         width: 15,
@@ -148,7 +159,14 @@ class _DashbaordState extends State<Dashbaord> {
                           color: Colors.indigo.shade900,
                           size: 80,
                         ),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const ProductDetailsScreen(),
+                              ));
+                        },
                       ),
                     ],
                   ),

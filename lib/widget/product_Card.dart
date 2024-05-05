@@ -21,7 +21,7 @@ class ProductCardImage extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: 150,
-        height: 1150,
+        height: 1350,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           border: Border.all(color: Colors.black),
@@ -62,7 +62,8 @@ class ProductCardImage extends StatelessWidget {
                       productName!,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
+                        color: Colors.black87,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
