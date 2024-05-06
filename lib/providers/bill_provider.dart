@@ -23,8 +23,8 @@ class BillProvider extends ChangeNotifier {
     try {
       var reqBody = {
         "bill_no": "",
-        "cus_email": "millend49@gmail.com",
-        "cus_mobileno": "0755231979"
+        "cus_email": email,
+        "cus_mobileno": mobileNo
       };
       dev.log(reqBody.toString());
       var response = await http.post(
@@ -38,6 +38,8 @@ class BillProvider extends ChangeNotifier {
       dev.log(response.body);
       if (temp.success == "success") {
         setbillRecordsModelData(temp);
+
+        // setitemData(temp);
       } else {
         commonMessage(context, errorTxt: temp.message.toString()).show();
       }
@@ -59,6 +61,13 @@ class BillProvider extends ChangeNotifier {
   BillRecordsModel? get getbillRecordsModelData => billRecordsModelData;
   setbillRecordsModelData(val) {
     billRecordsModelData = val;
+    notifyListeners();
+  }
+
+  Data? itemData;
+  Data? get getitemData => itemData;
+  setitemData(val) {
+    itemData = val;
     notifyListeners();
   }
 }

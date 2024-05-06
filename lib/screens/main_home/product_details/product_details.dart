@@ -107,7 +107,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                                           ),
                                           Text(
                                             "${productDetailsProvider.allProductDetailsModelData!.data![index].discountprice}",
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               color: Colors.white,
                                               fontSize: 14,
                                               fontWeight: FontWeight.bold,
