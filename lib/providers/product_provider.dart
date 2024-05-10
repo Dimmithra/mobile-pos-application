@@ -226,8 +226,10 @@ class ProductDetailsProvider extends ChangeNotifier {
   double calculateDiscountPrice() {
     double discountPrice = 0;
     for (var item in getselectedProductDetailsModelData) {
-      // Add the price of each item to the total price
+      // if (item.discount!.isNotEmpty) {
       discountPrice += double.parse(item.discount!);
+      // }
+      // Add the price of each item to the total price
     }
     return discountPrice;
   }

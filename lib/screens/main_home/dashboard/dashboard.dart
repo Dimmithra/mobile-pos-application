@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_pos/screens/main_home/dashboard/bill_payment_screen/bill_payment.dart';
+import 'package:mobile_pos/screens/main_home/dashboard/my_chat/my_chat.dart';
 import 'package:mobile_pos/screens/main_home/dashboard/payment_records/payment_records.dart';
 import 'package:mobile_pos/screens/main_home/login_screen/login_screen.dart';
 import 'package:mobile_pos/screens/main_home/main_home.dart';
@@ -122,7 +123,14 @@ class _DashbaordState extends State<Dashbaord> {
                           color: Colors.indigo.shade900,
                           size: 80,
                         ),
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const MyChatScreen(),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),

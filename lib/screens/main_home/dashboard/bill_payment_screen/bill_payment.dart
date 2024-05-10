@@ -145,10 +145,10 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
                                             itemCode: p0.itemcode,
                                             price: p0.unitprice != null
                                                 ? p0.unitprice
-                                                : 0.00,
+                                                : "0",
                                             discount: p0.discountprice != null
                                                 ? p0.discountprice
-                                                : 0.00,
+                                                : "0",
                                             totelPrice:
                                                 p0.newMarketPrice != null
                                                     ? p0.newMarketPrice
@@ -594,7 +594,7 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
                                           padding:
                                               const EdgeInsets.only(left: 35),
                                           child: Text(
-                                            "${productDetailsProvider.getselectedProductDetailsModelData[i].discount}",
+                                            "${productDetailsProvider.getselectedProductDetailsModelData[i].discount != null ? productDetailsProvider.getselectedProductDetailsModelData[i].discount : ''}",
                                             style: TextStyle(
                                               color: Colors.blueGrey.shade900,
                                               fontWeight: FontWeight.bold,

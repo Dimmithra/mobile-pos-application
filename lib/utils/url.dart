@@ -1,6 +1,7 @@
 // ignore: constant_identifier_names
-const BASE_URL = "http://192.168.1.100:3000";
-// const BASE_URL = "http://192.168.63.9:3000";
+const BASE_URL = "http://192.168.1.101:3000";
+// ignore: constant_identifier_names
+// const BASE_URL = "http://192.168.63.10:3000";
 
 //splash screen
 const kdevicerecord = "$BASE_URL/devicerecord";
@@ -16,3 +17,5 @@ const kgetAllItemRecord = "$BASE_URL/getAllItemRecord";
 const kbillPayment = "$BASE_URL/billPayment";
 //get Bill records
 const kgetbillRecord = "$BASE_URL/getbillRecord";
+const kmessageSent = "$BASE_URL/messageSent";
+const kgetmessageSent = "$BASE_URL/getmessageSent";
