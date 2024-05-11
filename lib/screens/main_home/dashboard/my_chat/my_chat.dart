@@ -128,7 +128,7 @@ class _MyChatScreenState extends State<MyChatScreen> {
                                                       Text(
                                                         "${chatProvider.getallMessageResponseData!.data![index].messages![x].message}",
                                                         textAlign:
-                                                            TextAlign.end,
+                                                            TextAlign.start,
                                                         style: TextStyle(
                                                             fontSize: 16,
                                                             fontWeight:
@@ -217,7 +217,7 @@ class _MyChatScreenState extends State<MyChatScreen> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             SizedBox(
-                              width: MediaQuery.of(context).size.width / 1.8,
+                              width: MediaQuery.of(context).size.width / 2,
                               child: Card(
                                 color: Colors.blue.shade400,
                                 child: Container(
@@ -227,19 +227,13 @@ class _MyChatScreenState extends State<MyChatScreen> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.end,
                                       children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            Text(
-                                              "${chatProvider.getmessageSendModelData[i].message}",
-                                              textAlign: TextAlign.end,
-                                              style: TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: Colors.black),
-                                            ),
-                                          ],
+                                        Text(
+                                          "${chatProvider.getmessageSendModelData[i].message}",
+                                          textAlign: TextAlign.justify,
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.black),
                                         ),
                                         chatProvider.getmessageResponseModeldata !=
                                                 null
