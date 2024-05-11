@@ -32,8 +32,8 @@ class _DashbaordState extends State<Dashbaord> {
           automaticallyImplyLeading: false,
           actions: [
             Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30), color: Colors.red),
+              // decoration: BoxDecoration(
+              //     borderRadius: BorderRadius.circular(30), color: Colors.red),
               child: IconButton(
                   onPressed: () {
                     commonMessage(context,
@@ -50,6 +50,7 @@ class _DashbaordState extends State<Dashbaord> {
                             ),
                             color: Colors.blue,
                             onPressed: () {
+                              homeProvider.clearAllData();
                               Navigator.pushAndRemoveUntil(context,
                                   MaterialPageRoute(
                                 builder: (context) {
@@ -79,9 +80,9 @@ class _DashbaordState extends State<Dashbaord> {
                     //   },
                     // ), (route) => false);
                   },
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.power_settings_new_sharp,
-                    color: kDefaultIconLightColor,
+                    color: Colors.red.shade100,
                     size: 25,
                     weight: 5,
                   )),

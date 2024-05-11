@@ -117,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   suffix: const Icon(Icons.password_sharp,
                                       color: Colors.black, size: 35),
                                   hintText:
-                                      '${userLoginvaldator == 'true' ? passwordStore : "Enter Your Email Password"}',
+                                      '${userLoginvaldator == 'true' ? passwordStore : "Enter Your Password"}',
                                   isValidate: true,
                                   label: 'Enter Your Password',
                                   fullboader: true,

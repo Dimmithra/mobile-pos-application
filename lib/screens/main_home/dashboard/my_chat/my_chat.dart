@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mobile_pos/providers/chat_provider.dart';
 import 'package:mobile_pos/utils/common_main.dart';
+import 'package:mobile_pos/utils/loader.dart';
 import 'package:mobile_pos/widget/common_input.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +20,8 @@ class _MyChatScreenState extends State<MyChatScreen> {
       Provider.of<ChatProvider>(context, listen: false).removeSendMessages();
       Provider.of<ChatProvider>(context, listen: false).getAllMessages(context);
       Provider.of<ChatProvider>(context, listen: false).clearData();
-      Provider.of<ChatProvider>(context, listen: false).scrollToBottomChat();
+      Provider.of<ChatProvider>(context, listen: false)
+          .scrollToBottomChat(context);
     });
     super.initState();
   }
@@ -30,10 +32,12 @@ class _MyChatScreenState extends State<MyChatScreen> {
       title: "My Chat",
       body: Consumer<ChatProvider>(
         builder: (context, chatProvider, child) {
+          if (chatProvider.getloadChatData) {
+            return CommonLoader();
+          }
           return Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              // Expanded(child: Container()),
               Expanded(
                 child: SingleChildScrollView(
                   controller: chatProvider.scrollController,
@@ -181,11 +185,12 @@ class _MyChatScreenState extends State<MyChatScreen> {
                                     if (chatProvider.showMessageTime)
                                       Row(
                                         mainAxisAlignment: chatProvider
+                                                    .uEmail ==
+                                                chatProvider
                                                     .getallMessageResponseData!
                                                     .data![index]
                                                     .messages![x]
-                                                    .cusemail ==
-                                                chatProvider.uEmail
+                                                    .cusemail
                                             ? MainAxisAlignment.end
                                             : MainAxisAlignment.start,
                                         children: [
@@ -286,6 +291,21 @@ class _MyChatScreenState extends State<MyChatScreen> {
                                       message: chatProvider
                                           .getmessageTextController.text);
                                   chatProvider.sentMessage(context);
+                                } else {
+                                  final snackBar = SnackBar(
+                                    backgroundColor: Colors.red.shade500,
+                                    content: const Text(
+                                        'Unable To send empty message'),
+                                    action: SnackBarAction(
+                                      label: 'Undo',
+                                      textColor: Colors.white,
+                                      onPressed: () {
+                                        // Some code to undo the change.
+                                      },
+                                    ),
+                                  );
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
                                 }
                               });
 

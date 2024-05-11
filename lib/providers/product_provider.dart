@@ -45,7 +45,7 @@ class ProductDetailsProvider extends ChangeNotifier {
         setallProductDetailsModelData(temp);
       } else {
         setallProductDetailsModelData(temp);
-        commonMessage(context, errorTxt: "No Promotion Founded").show();
+        commonMessage(context, errorTxt: "No Product Founded").show();
       }
     } catch (e) {
       dev.log(e.toString());
@@ -311,7 +311,7 @@ class ProductDetailsProvider extends ChangeNotifier {
                       MaterialPageRoute(
                         builder: (context) => const Dashbaord(),
                       ),
-                      (route) => true);
+                      (route) => false);
                   clearBillPaymentScreenData(context);
                 },
               )

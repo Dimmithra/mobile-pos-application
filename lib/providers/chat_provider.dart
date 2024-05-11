@@ -66,9 +66,8 @@ class ChatProvider extends ChangeNotifier {
   String uEmail = "";
   Future<void> sentMessage(context) async {
     var userEmail = await storage.read(key: kEmail);
-    var usermobileNo = await storage.read(key: kmobileNo);
     var userName = await storage.read(key: kcustomername);
-    uEmail = userEmail.toString();
+    // uEmail = "$userEmail";
     try {
       setsentMessageLoader(true);
       var reqBody = {
@@ -134,6 +133,8 @@ class ChatProvider extends ChangeNotifier {
   //get all message
 
   Future<void> getAllMessages(context) async {
+    var userEmail = await storage.read(key: kEmail);
+
     try {
       setloadChatData(true);
       var reqBody = {};
@@ -151,6 +152,11 @@ class ChatProvider extends ChangeNotifier {
 
       if (temp.success == 'success') {
         setallMessageResponseData(temp);
+        // for (int index = 0; temp.data!.length > index; index++)
+        //   for (int x = 0; temp.data![index].messages!.length > x; x++)
+        uEmail = "${userEmail}";
+        notifyListeners();
+        dev.log("email:${uEmail}");
       } else {
         setallMessageResponseData(temp);
         commonMessage(context, errorTxt: "${temp.message}").show();
@@ -182,7 +188,6 @@ class ChatProvider extends ChangeNotifier {
   bool get getshowMessageTime => showMessageTime;
   setshowMessageTime(val) {
     showMessageTime = val;
-    notifyListeners();
   }
 
   void clearData() async {
@@ -190,11 +195,12 @@ class ChatProvider extends ChangeNotifier {
   }
 
   final ScrollController scrollController = ScrollController();
-  void scrollToBottomChat() {
+  Future<void> scrollToBottomChat(context) async {
     scrollController.animateTo(
       scrollController.position.maxScrollExtent,
       duration: Duration(milliseconds: 300),
-      curve: Curves.easeOut,
+      curve: Curves.easeInOutCubic,
     );
+    notifyListeners();
   }
 }

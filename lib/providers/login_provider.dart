@@ -60,7 +60,8 @@ class LogingProvider extends ChangeNotifier {
               DialogButton(
                 child: const Text('OK'),
                 onPressed: () async {
-                  await storage.write(key: kEmail, value: emailController.text);
+                  await storage.write(
+                      key: kEmail, value: getEmailController.text);
                   await storage.write(
                       key: kPassword, value: passwordController.text);
                   await storage.write(key: kValidateUserData, value: 'true');
@@ -75,6 +76,7 @@ class LogingProvider extends ChangeNotifier {
                     ),
                     (route) => false,
                   );
+                  notifyListeners();
                 },
               )
             ]).show();

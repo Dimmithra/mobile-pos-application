@@ -44,8 +44,8 @@ class _PrommotionScreenState extends State<PrommotionScreen> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             gradient: LinearGradient(colors: [
-                              Colors.purple.shade400,
-                              Colors.deepPurple.shade300
+                              Colors.lime.shade900,
+                              Colors.green.shade50
                             ])),
                         child: Padding(
                           padding: const EdgeInsets.all(6.0),
@@ -58,8 +58,9 @@ class _PrommotionScreenState extends State<PrommotionScreen> {
                                 height: 80,
                                 padding: EdgeInsets.only(top: 30),
                                 decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.white),
                                   borderRadius: BorderRadius.circular(50),
-                                  color: Colors.green,
+                                  color: Colors.lightGreen.shade900,
                                 ),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -87,9 +88,9 @@ class _PrommotionScreenState extends State<PrommotionScreen> {
                                         '${promotionProvider.getallPromotionModelData!.data![index].mainTitle}',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          fontSize: 20,
+                                          fontSize: 22,
                                           fontWeight: FontWeight.bold,
-                                          color: Colors.white,
+                                          color: Colors.indigo.shade800,
                                         ),
                                       ),
                                     ),
