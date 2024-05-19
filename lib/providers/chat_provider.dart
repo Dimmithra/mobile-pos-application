@@ -96,6 +96,7 @@ class ChatProvider extends ChangeNotifier {
       if (temp.success == 'Success') {
         setmessageResponseModeldata(temp);
         getmessageTextController.clear();
+        scrollToBottomChat();
       } else {
         setmessageResponseModeldata(temp);
         commonMessage(context, errorTxt: "${temp.message}").show();
@@ -152,11 +153,12 @@ class ChatProvider extends ChangeNotifier {
 
       if (temp.success == 'success') {
         setallMessageResponseData(temp);
+        scrollToBottomChat();
         // for (int index = 0; temp.data!.length > index; index++)
         //   for (int x = 0; temp.data![index].messages!.length > x; x++)
         uEmail = "${userEmail}";
         notifyListeners();
-        dev.log("email:${uEmail}");
+        // dev.log("email:${uEmail}");
       } else {
         setallMessageResponseData(temp);
         commonMessage(context, errorTxt: "${temp.message}").show();
@@ -194,13 +196,23 @@ class ChatProvider extends ChangeNotifier {
     showMessageTime = false;
   }
 
-  final ScrollController scrollController = ScrollController();
-  Future<void> scrollToBottomChat(context) async {
-    scrollController.animateTo(
-      scrollController.position.maxScrollExtent,
-      duration: Duration(milliseconds: 300),
-      curve: Curves.easeInOutCubic,
-    );
+  ScrollController scrollController = ScrollController();
+  ScrollController get getscrollController => scrollController;
+  setscrollController(val) {
+    scrollController = val;
     notifyListeners();
   }
+
+  scrollToBottomChat() {
+    if (scrollController.hasClients) {
+      scrollController.animateTo(
+        scrollController.position.maxScrollExtent,
+        duration: Duration(milliseconds: 100),
+        curve: Curves.easeInExpo,
+      );
+    }
+
+    // notifyListeners();
+  }
+  // scrollController.jumpTo(scrollController.position.extentTotal); // scrollController.jumpTo(scrollController.position.extentTotal);
 }

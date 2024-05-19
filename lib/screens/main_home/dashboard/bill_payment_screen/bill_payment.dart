@@ -5,6 +5,7 @@ import 'package:mobile_pos/utils/common_main.dart';
 import 'package:mobile_pos/utils/loader.dart';
 import 'package:mobile_pos/widget/common_btn.dart';
 import 'package:mobile_pos/widget/common_search_dropdown.dart';
+import 'package:mobile_pos/widget/qr_scanning.dart';
 import 'package:provider/provider.dart';
 import 'dart:developer' as dev;
 import 'package:intl/intl.dart';
@@ -88,7 +89,12 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
                             ),
                           ),
                           child: InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    const QrScannerViewScreen(),
+                              ));
+                            },
                             child: Row(children: [
                               const Text(
                                 "Scan Product",
@@ -143,16 +149,17 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
                                             context,
                                             itemName: p0.itemname,
                                             itemCode: p0.itemcode,
-                                            price: p0.unitprice != null
-                                                ? p0.unitprice
-                                                : "0",
-                                            discount: p0.discountprice != null
+                                            price: p0.unitprice,
+                                            //  != null
+                                            // ?
+                                            // p0.unitprice
+                                            // : 0,
+                                            discount: p0.discountprice != ""
                                                 ? p0.discountprice
                                                 : "0",
-                                            totelPrice:
-                                                p0.newMarketPrice != null
-                                                    ? p0.newMarketPrice
-                                                    : p0.unitprice,
+                                            totelPrice: p0.newMarketPrice != ""
+                                                ? p0.newMarketPrice
+                                                : p0.unitprice,
                                             qty: "1",
                                           );
                                         });
@@ -162,7 +169,7 @@ class _BillPaymentScreenState extends State<BillPaymentScreen> {
                                       controller: productDetailsProvider
                                           .getsearchItemController,
                                       searchMatchFn: (p0, p1) {
-                                        return ("${p0.value.companyName!} (${p0.value.itemname}- Rs.${p0.value.newMarketPrice != null ? p0.value.newMarketPrice : p0.value.unitprice} )"
+                                        return ("${p0.value.companyName!} (${p0.value.itemname}- Rs.${p0.value.newMarketPrice != '' ? p0.value.newMarketPrice : p0.value.unitprice} )"
                                             .toLowerCase()
                                             .contains(p1.toLowerCase()));
                                       },

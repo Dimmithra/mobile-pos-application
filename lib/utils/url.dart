@@ -1,7 +1,7 @@
 // ignore: constant_identifier_names
-const BASE_URL = "http://192.168.1.101:3000";
+const BASE_URL = "http://192.168.1.102:3000";
 // ignore: constant_identifier_names
-// const BASE_URL = "http://192.168.63.10:3000";
+// const BASE_URL = "http://192.168.63.9:3000";
 
 //splash screen
 const kdevicerecord = "$BASE_URL/devicerecord";

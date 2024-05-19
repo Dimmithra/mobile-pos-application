@@ -20,8 +20,6 @@ class ProductCardImage extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        width: 150,
-        height: 1350,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           border: Border.all(color: Colors.black),
@@ -48,30 +46,24 @@ class ProductCardImage extends StatelessWidget {
                 // fadeInDuration:
                 //     const Duration(seconds: 3),
               ),
-              // Image(
-              //   image: AssetImage(imageUrl),
-              //   width: 80,
-              //   height: 80,
-              // ),
-
-              Container(
-                color: Colors.transparent,
-                child: Column(
-                  children: [
-                    Text(
-                      productName!,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: Colors.black87,
-                        fontWeight: FontWeight.bold,
-                      ),
+              Divider(
+                color: Colors.grey,
+              ),
+              Column(
+                children: [
+                  Text(
+                    productName!,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold,
                     ),
-                    Container(
-                      child: productWidget,
-                    )
-                  ],
-                ),
+                  ),
+                  Container(
+                    child: productWidget,
+                  )
+                ],
               )
             ],
           ),

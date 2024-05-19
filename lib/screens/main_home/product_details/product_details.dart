@@ -41,7 +41,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 crossAxisCount: 2,
                 crossAxisSpacing: 5.0,
                 mainAxisSpacing: 5.0,
-                mainAxisExtent: 275,
+                mainAxisExtent: 300,
               ),
               itemCount: productDetailsProvider
                   .allProductDetailsModelData!.data!.length,
@@ -58,9 +58,25 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       children: [
                         Text(
                           "${productDetailsProvider.allProductDetailsModelData!.data![index].companyName}",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.indigo.shade900),
                         ),
-                        Text(
-                            "${productDetailsProvider.allProductDetailsModelData!.data![index].itemdescription}"),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.vertical,
+                          child: SizedBox(
+                            height: MediaQuery.of(context).size.height / 25,
+                            child: Text(
+                              "${productDetailsProvider.allProductDetailsModelData!.data![index].itemdescription}",
+                              style: TextStyle(fontSize: 12),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                        Divider(
+                          color: Colors.grey,
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -68,7 +84,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               "Price${productDetailsProvider.allProductDetailsModelData!.data![index].unitprice}",
                               style: const TextStyle(
                                 color: Colors.black87,
-                                fontSize: 15,
+                                fontSize: 14,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

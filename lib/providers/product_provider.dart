@@ -150,21 +150,21 @@ class ProductDetailsProvider extends ChangeNotifier {
   }
   //Bill Amount calculation
 
-  // double qty = 0;
+  double qty = 0;
   // // double get _qty => qty;
-  // void incrementQty() {
-  //   qty++;
-  //   notifyListeners();
-  // }
+  void incrementQty() {
+    qty++;
+    notifyListeners();
+  }
 
-  // void decrementQty(context) {
-  //   if (qty <= 1) {
-  //     // commonMessage(context, errorTxt: "Cannot enter - values").show();
-  //   } else {
-  //     qty--;
-  //   }
-  //   notifyListeners();
-  // }
+  void decrementQty(context) {
+    if (qty <= 1) {
+      // commonMessage(context, errorTxt: "Cannot enter - values").show();
+    } else {
+      qty--;
+    }
+    notifyListeners();
+  }
 
   // String itemTotalAmount = "";
   // String totalBillAmount = "";

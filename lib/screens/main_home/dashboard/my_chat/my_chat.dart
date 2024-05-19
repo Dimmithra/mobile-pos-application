@@ -17,13 +17,20 @@ class _MyChatScreenState extends State<MyChatScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<ChatProvider>(context, listen: false).scrollToBottomChat();
       Provider.of<ChatProvider>(context, listen: false).removeSendMessages();
       Provider.of<ChatProvider>(context, listen: false).getAllMessages(context);
       Provider.of<ChatProvider>(context, listen: false).clearData();
-      Provider.of<ChatProvider>(context, listen: false)
-          .scrollToBottomChat(context);
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    Provider.of<ChatProvider>(context, listen: false)
+        .scrollController
+        .dispose();
+    super.dispose();
   }
 
   @override
@@ -40,8 +47,8 @@ class _MyChatScreenState extends State<MyChatScreen> {
             children: [
               Expanded(
                 child: SingleChildScrollView(
-                  controller: chatProvider.scrollController,
-                  scrollDirection: Axis.vertical,
+                  controller: chatProvider.getscrollController,
+                  // scrollDirection: Axis.vertical,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
